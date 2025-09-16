@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharaja Palace - Authentic Indian Restaurant</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-orange: #ff6b35;
+            --secondary-gold: #ffd700;
+            --deep-red: #8b0000;
+            --warm-brown: #8b4513;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+            min-height: 100vh;
+        }
+
+        .brand-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .navbar-custom {
+            background: rgba(139, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-gold), #ffed4e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--deep-red);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .dish-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--secondary-gold);
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .dish-card:hover .dish-image {
+            transform: scale(1.05);
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-red));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .detail-badge {
+            background: linear-gradient(135deg, var(--secondary-gold), #ffed4e);
+            color: var(--deep-red);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 2px;
+            display: inline-block;
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--deep-red), var(--primary-orange));
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.6);
+            color: white;
+        }
+
+.section-header {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            color: var(--deep-red);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--deep-red);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--warm-brown);
+            margin-bottom: 30px;
+        }
+
+        .rating-stars {
+            color: var(--secondary-gold);
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-gold) !important;
+            transform: translateY(-2px);
+        }
+
+        .footer-section {
+            background: rgba(139, 0, 0, 0.95);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div>
+                        <div class="brand-font text-2xl font-bold text-yellow-300">Maharaja Palace</div>
+                        <small class="text-yellow-200">Authentic Indian Cuisine</small>
+                    </div>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon text-white"><i class="fas fa-bars"></i></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu"><i class="fas fa-utensils me-1"></i>Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle me-1"></i>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-phone me-1"></i>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-warning text-dark px-3 rounded-pill ms-2" href="#order">
+                            <i class="fas fa-shopping-cart me-1"></i>Order Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5 pt-5">
+        <div class="hero-section" id="home">
+            <h1 class="hero-title brand-font">Welcome to Maharaja Palace</h1>
+            <p class="hero-subtitle">Experience the Royal Flavors of Authentic Indian Cuisine</p>
+            <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+                <div class="text-center">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <small class="text-muted">4.8/5 Rating</small>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-shipping-fast text-3xl text-red-800"></i>
+                    <div><small class="text-muted">Fast Delivery</small></div>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-award text-3xl text-red-800"></i>
+                    <div><small class="text-muted">Award Winning</small></div>
+                </div>
+            </div>
+        </div>
+
+        <section id="menu" class="mb-5">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-fire text-orange-500"></i> North Indian Curries</h2>
+                <p class="text-muted">Rich, creamy, and aromatic curries from the heart of India</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=250&fit=crop&crop=center" alt="Butter Chicken" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Butter Chicken</h4>
+                                <span class="price-tag">₹320</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Tender chicken cooked in creamy tomato-based sauce with aromatic spices, served with basmati rice.</p>
+                            <div class="mb-3">
+                                <span class="detail-badge">Popular</span>
+                                <span class="detail-badge">Creamy</span>
+                                <span class="detail-badge">Mild Spice</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <small class="text-muted">4.8</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>15-20 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=250&fit=crop&crop=center" alt="Dal Makhani" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Dal Makhani</h4>
+
+<span class="price-tag">₹280</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Slow-cooked black lentils in rich, creamy gravy with butter and cream, garnished with fresh coriander.</p>
+                            <div class="mb-3">
+                                <span class="detail-badge">Vegetarian</span>
+                                <span class="detail-badge">Protein Rich</span>
+                                <span class="detail-badge">Slow Cooked</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <small class="text-muted">4.7</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>12-15 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=400&h=250&fit=crop&crop=center" alt="Paneer Butter Masala" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Paneer Butter Masala</h4>
+                                <span class="price-tag">₹300</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Fresh cottage cheese cubes in rich tomato and cashew gravy with aromatic Indian spices.</p>
+                            <div class="mb-3">
+                                <span class="detail-badge">Vegetarian</span>
+                                <span class="detail-badge">Rich & Creamy</span>
+                                <span class="detail-badge">Cashew Based</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★☆</div>
+                                    <small class="text-muted">4.6</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>12-15 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1631452180539-96aca7d48617?w=400&h=250&fit=crop&crop=center" alt="Chicken Tikka Masala" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Chicken Tikka Masala</h4>
+                                <span class="price-tag">₹350</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Grilled chicken tikka pieces in spiced curry sauce with onions, tomatoes, and bell peppers.</p>
+                            <div class="mb-3">
+
+<span class="detail-badge">Tandoor Grilled</span>
+                                <span class="detail-badge">Medium Spice</span>
+                                <span class="detail-badge">Bell Peppers</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <small class="text-muted">4.9</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>18-22 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=250&fit=crop&crop=center" alt="Palak Paneer" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Palak Paneer</h4>
+                                <span class="price-tag">₹290</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Fresh cottage cheese in creamy spinach gravy, tempered with garlic, ginger, and Indian spices.</p>
+                            <div class="mb-3">
+                                <span class="detail-badge">Vegetarian</span>
+                                <span class="detail-badge">Iron Rich</span>
+                                <span class="detail-badge">Healthy</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★☆</div>
+                                    <small class="text-muted">4.5</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>15-18 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="dish-card h-100">
+                        <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=250&fit=crop&crop=center" alt="Mutton Curry" class="dish-image">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Mutton Curry</h4>
+                                <span class="price-tag">₹450</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Tender mutton pieces slow-cooked in traditional spices with onions, tomatoes, and aromatic herbs.</p>
+                            <div class="mb-3">
+                                <span class="detail-badge">Slow Cooked</span>
+                                <span class="detail-badge">Traditional</span>
+                                <span class="detail-badge">Spicy</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+
+<div class="d-flex align-items-center gap-2">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <small class="text-muted">4.8</small>
+                                </div>
+                                <small class="text-muted"><i class="fas fa-clock me-1"></i>25-30 min</small>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="section-header">
